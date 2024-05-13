@@ -15,11 +15,12 @@ class ConferenceController extends AbstractController
         // return $this->render('conference/index.html.twig', [
         //     'controller_name' => 'ConferenceController',
         // ]);
-
-        return new Response(<<<EOF
-         <html>
-               <body><img src="/images/under-construction.gif" /></body>
-          </html>
+       return new Response(<<<EOF
+           <html>
+                <body>
+                    <img src="/images/under-construction.gif" />
+                </body>
+           </html>
        EOF);
     }
 }
