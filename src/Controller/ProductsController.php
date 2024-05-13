@@ -45,10 +45,13 @@ class ProductsController extends AbstractController
         return $this->json($products);
     }
 
-    #[Route('/products/{id}', name: 'app_products')]
+    #[Route('/product/{id}', name: 'app_product')]
     public function one(int $id): Response
     {
-        return $this->json(self::$products[id]  ?? []);
+        $data = (new ArrayCollection(self::$products))
+            ->findFirst(fn(int $key, array $product) : bool => $id === $product['id']);
+
+        return $this->json($data ?? []);
     }
     
 }
