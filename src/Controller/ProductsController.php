@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -42,7 +43,7 @@ class ProductsController extends AbstractController
     #[Route('/products', name: 'app_products')]
     public function index(): Response
     {
-        return $this->json($products);
+        return $this->json(self::$products);
     }
 
     #[Route('/product/{id}', name: 'app_product')]
@@ -53,5 +54,7 @@ class ProductsController extends AbstractController
 
         return $this->json($data ?? []);
     }
-    
+
 }
+
+
