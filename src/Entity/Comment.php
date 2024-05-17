@@ -6,7 +6,7 @@ use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
-class Comment
+class Comment implements \Stringable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,6 +28,11 @@ class Comment
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Conference $conference = null;
+
+    public function __toString(): string
+   {
+       return (string) $this->getEmail();
+   }
 
     public function getId(): ?int
     {
